@@ -1,4 +1,4 @@
+# Pré-lançamento: site fora dos buscadores até o app chegar às lojas.
+# Reverter no lançamento (ver README → "Pré-lançamento").
 User-agent: *
-Allow: /
-
-Sitemap: https://pingente.app/sitemap.xml
+Disallow: /

@@ -16,6 +16,20 @@ Site do **Pingente** — landing page, página de revendedores e arquivos dos ca
 
 O site implementa o handoff aprovado no Claude Design, versionado em [pingente-app/design](https://github.com/pingente-app/design) → `mockups/site/` (spec `README.md`, `copy.json`, screens PNG 2×). Os PNGs são o critério de aceite visual; a copy vem do `copy.json` (base do i18n PT/EN/ES).
 
+## ⚠️ Pré-lançamento (reverter no dia do lançamento)
+
+O site está **fora dos buscadores** (`noindex`) até o app chegar às lojas. Para reverter:
+
+1. Remover a linha `<meta name="robots" content="noindex">` de `index.html` e `revendedores/index.html`
+2. Restaurar o `robots.txt` para:
+
+       User-agent: *
+       Allow: /
+
+       Sitemap: https://pingente.app/sitemap.xml
+
+O site continua acessível por URL direta (para beta, QR da face de boas-vindas e demonstração a revendedores) — apenas não aparece em buscas. Lembrete: sites do GitHub Pages são sempre públicos; proteção por senha não existe nesta hospedagem.
+
 ### Pendências conhecidas
 
 - **Botões de download dos cases** estão no estado "em breve" até os STL/3MF reais serem adicionados em `cases/` (os hrefs prontos estão comentados no HTML).
