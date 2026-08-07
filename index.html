@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — informação de relance</title>
+  <meta name="description" content="Um chaveiro de tinta que mostra informação de relance. Sem conta, sem nuvem, sem assinatura.">
+  <style>
+    :root {
+      --papel: #F2EEE4;
+      --tinta: #26241F;
+      --vermelho: #C8412B;
+      --cinza: #9A9384;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--papel);
+      color: var(--tinta);
+      font-family: "Manrope", system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    h1 {
+      font-size: clamp(3rem, 10vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    h1 span { color: var(--vermelho); }
+    .tagline { margin-top: 16px; font-size: 1.25rem; }
+    .breve { margin-top: 48px; color: var(--cinza); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>p<span>in</span>gente</h1>
+    <p class="tagline">informação de relance</p>
+    <p class="breve">em breve</p>
+  </main>
+</body>
+</html>
