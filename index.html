@@ -4,41 +4,250 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>pingente — informação de relance</title>
-  <meta name="description" content="Um chaveiro de tinta que mostra informação de relance. Sem conta, sem nuvem, sem assinatura.">
-  <style>
-    :root {
-      --papel: #F2EEE4;
-      --tinta: #26241F;
-      --vermelho: #C8412B;
-      --cinza: #9A9384;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--papel);
-      color: var(--tinta);
-      font-family: "Manrope", system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    h1 {
-      font-size: clamp(3rem, 10vw, 5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    h1 span { color: var(--vermelho); }
-    .tagline { margin-top: 16px; font-size: 1.25rem; }
-    .breve { margin-top: 48px; color: var(--cinza); font-weight: 600; }
-  </style>
+  <meta name="description" content="Um chaveiro com tela de tinta. Você pinga a informação pelo celular — e ela fica lá, sem gastar pilha. Sem conta, sem nuvem, sem assinatura.">
+  <link rel="canonical" href="https://pingente.app/">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="pingente — informação de relance">
+  <meta property="og:description" content="Um chaveiro com tela de tinta. Você pinga a informação pelo celular — e ela fica lá, sem gastar pilha.">
+  <meta property="og:url" content="https://pingente.app/">
+  <meta property="og:image" content="https://pingente.app/assets/img/hero-produto.png">
+  <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
-  <main>
-    <h1>p<span>in</span>gente</h1>
-    <p class="tagline">informação de relance</p>
-    <p class="breve">em breve</p>
-  </main>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+    <nav class="nav-desktop" aria-label="Seções">
+      <a href="#como-funciona">como funciona</a>
+      <a href="#faces">faces</a>
+      <a href="#onde-comprar">onde comprar</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-destaque" href="/revendedores/">revendedores</a>
+    </nav>
+    <button class="hamburguer" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="menu-mobile" id="menu-mobile" hidden aria-label="Menu">
+    <a href="#como-funciona">como funciona</a>
+    <a href="#faces">faces</a>
+    <a href="#onde-comprar">onde comprar</a>
+    <a href="#faq">FAQ</a>
+    <a class="menu-link-revenda" href="/revendedores/">Imprime em 3D? Revenda o Pingente <span aria-hidden="true">→</span></a>
+    <a class="btn-loja btn-play" href="https://play.google.com/store/apps/details?id=app.pingente">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l13-8.5z"/></svg>
+      <span class="btn-loja-txt"><strong>Baixar no Google Play</strong></span>
+    </a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Chaveiro e-ink · Bluetooth</p>
+        <h1>Informação de relance.</h1>
+        <p class="sub">Um chaveiro com tela de tinta. Você pinga a informação pelo celular — e ela fica lá, sem gastar pilha.</p>
+        <div class="hero-ctas">
+          <a class="btn-loja btn-play" href="https://play.google.com/store/apps/details?id=app.pingente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l13-8.5z"/></svg>
+            <span class="btn-loja-txt"><small>Disponível no</small><strong>Google Play</strong></span>
+          </a>
+          <div>
+            <div class="btn-loja btn-appstore" aria-disabled="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.98-.2 1.92-.89 3.16-.84 1.79.14 3.04.86 3.81 2.17-3.29 1.97-2.76 5.9.36 7.06-.6 1.57-1.38 3.12-2.41 3.78zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <span class="btn-loja-txt"><small>App Store</small><strong>iPhone em breve</strong></span>
+            </div>
+            <p class="nota-ios">A versão iOS está em desenvolvimento.</p>
+          </div>
+        </div>
+        <p class="selo-confianca">sem conta · sem nuvem · sem assinatura</p>
+      </div>
+      <figure class="hero-produto">
+        <img src="/assets/img/hero-produto.png" alt="Chaveiro Pingente: case preto impresso em 3D com argola, display e-ink mostrando a face de clima" width="560" height="452">
+        <figcaption>Case impresso em 3D · display e-ink 2,1"</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="secao" id="como-funciona">
+    <div class="container">
+      <p class="eyebrow">Como funciona</p>
+      <h2>O celular manda. A tinta segura.</h2>
+      <div class="passos-3">
+        <div>
+          <div class="passo-ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+          </div>
+          <p class="passo-titulo">O app monta a face</p>
+          <p class="passo-corpo">Clima, QR PIX, nota… o celular é o cérebro: sempre online, sempre com você.</p>
+        </div>
+        <div>
+          <div class="passo-ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7.5l11 9L12 21V3l5.5 4.5-11 9"/></svg>
+          </div>
+          <p class="passo-titulo">O Bluetooth empurra</p>
+          <p class="passo-corpo">Aproxime o celular. A face nova chega em 10–20 segundos.</p>
+        </div>
+        <div>
+          <div class="passo-ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3c-2.2 5-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0C18.5 10.4 14.2 8 12 3z"/></svg>
+          </div>
+          <p class="passo-titulo">O e-ink segura</p>
+          <p class="passo-corpo">A imagem fica sem gastar energia. A pilha-moeda dura anos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="faces">
+    <div class="container">
+      <div class="cabecalho-flex">
+        <div>
+          <p class="eyebrow">Faces do v1</p>
+          <h2>Nove faces no lançamento</h2>
+        </div>
+        <p class="sub">Sempre em preto, branco e vermelho — as três cores reais do display.</p>
+      </div>
+      <div class="grid-faces">
+        <div class="tile-face">
+          <img src="/assets/img/faces/clima.png" alt="Face Clima: São Paulo 24 graus, máxima 27, mínima 18, previsão de três dias" width="250" height="122">
+          <p class="tile-legenda"><span>Clima</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/achados.png" alt="Face Achados e perdidos: QR grande e a frase 'Me encontrou? Fala comigo' com telefone" width="250" height="122">
+          <p class="tile-legenda"><span>Achados e perdidos</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/estacionei.png" alt="Face Onde estacionei: vaga G4, segundo piso, desde 14:32, com mini-mapa" width="250" height="122">
+          <p class="tile-legenda"><span>Onde estacionei</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/qr-wifi.png" alt="Face QR de Wi-Fi: rede Casa_5G, aponte a câmera para conectar" width="250" height="122">
+          <p class="tile-legenda"><span>QR de Wi-Fi</span> <span class="chip">grátis</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/qr-pix.png" alt="Face QR PIX: aponte para pagar, Ana M., Banco 260" width="250" height="122">
+          <p class="tile-legenda"><span>QR PIX</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/nota.png" alt="Face Nota: 'Levar o carregador do notebook!'" width="250" height="122">
+          <p class="tile-legenda"><span>Nota</span> <span class="chip">grátis</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/evento.png" alt="Face Próximo evento: hoje às 15:00, Dentista Dra. Íris, Av. Paulista 900" width="250" height="122">
+          <p class="tile-legenda"><span>Próximo evento</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/foto-mock.png" alt="Face Foto: imagem em retícula de um bit" width="250" height="122">
+          <p class="tile-legenda"><span>Foto</span></p>
+        </div>
+        <div class="tile-face">
+          <img src="/assets/img/faces/btc-mock.png" alt="Face BTC: R$ 512.430, alta de 2,1% em 24 horas" width="250" height="122">
+          <p class="tile-legenda"><span>BTC</span></p>
+        </div>
+      </div>
+      <p class="micro-freemium">Grátis: Nota e QR de Wi-Fi. O kit completo vem com a ativação vitalícia — já incluída nas tags de revendedor oficial.</p>
+    </div>
+  </section>
+
+  <section class="secao">
+    <div class="container">
+      <div class="honesto-grid">
+        <div>
+          <svg class="gota-ico" viewBox="0 0 24 24" fill="#C8412B" aria-hidden="true"><path d="M12 2c-2.4 5.6-7 8.2-7 13.3C5 19.4 8.2 22 12 22s7-2.6 7-6.7C19 10.2 14.4 7.6 12 2z"/></svg>
+          <h2>A tela pisca. É assim mesmo.</h2>
+          <p class="corpo">Trocar de face leva de 10 a 20 segundos e o display pisca em preto e branco. É tinta eletrônica, não um "smart display": a troca é lenta, mas a imagem fica para sempre — desligada, sem gastar nada.</p>
+          <p class="chip-fato">Troca: 10–20 s · Imagem: para sempre</p>
+        </div>
+        <dl class="fatos">
+          <div class="fato"><dt>Troca de face</dt><dd>10–20 s, com piscada</dd></div>
+          <div class="fato"><dt>Imagem na tela</dt><dd class="valor-vermelho">para sempre, sem energia</dd></div>
+          <div class="fato"><dt>Pilha-moeda</dt><dd>anos, não dias</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao sem-conta">
+    <div class="container">
+      <h2>Sem conta. Sem nuvem. Sem assinatura.</h2>
+      <p class="corpo">O app não pede e-mail e não sobe nada para servidor. Seus dados ficam no seu aparelho — e a ativação vitalícia é paga uma vez só.</p>
+    </div>
+  </section>
+
+  <section class="secao" id="onde-comprar">
+    <div class="container">
+      <p class="eyebrow">Onde comprar</p>
+      <h2>Revendedores oficiais</h2>
+      <p class="sub">Nós não vendemos o hardware. Revendedores oficiais montam e vendem o Pingente pronto, com ativação vitalícia incluída.</p>
+      <div class="comprar-grid">
+        <div class="card-vazio">
+          <strong>Os primeiros revendedores oficiais estão chegando.</strong>
+          <p>Em breve nesta lista, com link direto para Shopee, Mercado Livre e OLX.</p>
+        </div>
+        <div class="card-cheio">
+          <p><strong>Não quer esperar?</strong> A tag crua (Gicisky 2,1" BWR) existe no AliExpress. O app funciona grátis com as faces Nota e QR de Wi-Fi; o kit completo pede a ativação vitalícia de R$ 9,99 — paga uma vez, vale para sempre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="faq">
+    <div class="container">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq-wrap">
+        <details open>
+          <summary>A tela piscou. É normal? <span class="faq-ico" aria-hidden="true"></span></summary>
+          <p>É. O e-ink pisca preto e branco a cada troca de face — faz parte da tecnologia. Depois disso, a imagem fica fixa sem gastar pilha.</p>
+        </details>
+        <details>
+          <summary>Funciona sem internet? <span class="faq-ico" aria-hidden="true"></span></summary>
+          <p>O Pingente sim: a imagem fica gravada nele. O celular precisa de internet só para faces que buscam dados, como clima e eventos.</p>
+        </details>
+        <details>
+          <summary>E se eu comprar a tag crua? <span class="faq-ico" aria-hidden="true"></span></summary>
+          <p>O app funciona grátis com as faces Nota e QR de Wi-Fi. Para o kit completo e a sincronização automática, a ativação vitalícia custa R$ 9,99 — paga uma vez, vale para sempre naquela tag.</p>
+        </details>
+        <details>
+          <summary>E iPhone? <span class="faq-ico" aria-hidden="true"></span></summary>
+          <p>A versão iOS está em desenvolvimento. Por enquanto, o Pingente é Android.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="rodape-inner">
+    <div>
+      <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+      <p class="rodape-selo">sem conta · sem nuvem · sem assinatura</p>
+    </div>
+    <div class="rodape-col-b">
+      <a href="/revendedores/">Imprime em 3D? Revenda o Pingente <span aria-hidden="true">→</span></a>
+      <p class="legal">pingente.app — o hardware é montado e vendido por revendedores independentes.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.querySelector(".hamburguer");
+  const menu = document.getElementById("menu-mobile");
+  btn.addEventListener("click", () => {
+    const aberto = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!aberto));
+    btn.setAttribute("aria-label", aberto ? "Abrir menu" : "Fechar menu");
+    menu.hidden = aberto;
+  });
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    btn.setAttribute("aria-expanded", "false");
+    menu.hidden = true;
+  }));
+</script>
+
 </body>
 </html>
