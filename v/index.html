@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — demo video</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    .demo-wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; line-height: 1.6; }
+    .demo-wrap video { display: block; width: 100%; max-width: 360px; margin: 24px auto; border-radius: 24px; background: #26241F; }
+    .demo-wrap ol { padding-left: 1.2em; }
+  </style>
+</head>
+<body>
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+  </div>
+</header>
+<main class="demo-wrap">
+  <p class="eyebrow">Demo video · Android app <code>app.pingente</code></p>
+  <h1>Pingente in one minute</h1>
+  <p>Screen recording of the app on a Samsung Galaxy S24 Ultra with a real e-ink tag nearby (no login, no account):</p>
+  <ol>
+    <li>Home: known tags, battery level and the last face sent.</li>
+    <li>Tag detail: current face and the grid of faces.</li>
+    <li>Note face: text + icon, saved.</li>
+    <li>"Send to keychain": the app connects over Bluetooth, uploads the image and the tag refreshes (10–20 s).</li>
+    <li>Notification shade: the persistent notification of the automatic proximity sync (foreground service, type <code>connectedDevice</code>).</li>
+  </ol>
+  <video controls playsinline preload="metadata" src="/assets/video/demo-2026-09.mp4"></video>
+  <p>Direct file: <a href="/assets/video/demo-2026-09.mp4">demo-2026-09.mp4</a> · Privacy policy: <a href="/privacy/">pingente.app/privacy</a></p>
+</main>
+</body>
+</html>
