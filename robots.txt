@@ -1,4 +1,7 @@
 # Pré-lançamento: site fora dos buscadores até o app chegar às lojas.
-# Reverter no lançamento (ver README → "Pré-lançamento").
+# Reverter no lançamento (ver README → "Pré-lançamento"), MANTENDO os dois Disallow abaixo:
+# /codes/ (códigos de ativação de compras) e /t/ (links de posse) nunca devem ser indexados.
 User-agent: *
 Disallow: /
+Disallow: /codes/
+Disallow: /t/

@@ -56,3 +56,10 @@ GitHub Pages, branch `main`, raiz. O redirect `www.pingente.app` → `pingente.a
 ## Contexto
 
 O QR da face de boas-vindas das tags aponta para `https://pingente.app` — a URL é contrato.
+
+## Páginas trilíngues, Paddle e link de posse (2026-09-03)
+
+- `/terms/`, `/refund/`, `/privacy/`, `/revendedores/`, `/codes/` e `/t/` usam `assets/js/lang.js` (seções `data-lang`, bandeiras, detecção `?lang=` → localStorage → navegador → en-US).
+- **Paddle** (códigos de ativação para revendedores): preencher `assets/js/paddle-config.js` (ambiente, client token, price IDs `pri_…` dos pacotes 5/10/50 com `custom_data.credits`). Enquanto vazio, os botões "Comprar" ficam desabilitados ("Em breve"). O overlay é aberto por `assets/js/paddle-checkout.js`; a página de sucesso é `/codes/?txn={transaction_id}`, que consulta `GET /v1/codes?txn=` no Worker (precisa de CORS para `https://pingente.app`).
+- **Link de posse** `https://pingente.app/t/<tagId>#k=<chave>`: o GitHub Pages não tem rota dinâmica, então `404.html` é uma cópia de `t/index.html` — o script reconhece `/t/<id>` pelo `location.pathname` (e `/t/?id=` no próprio `/t/`). O fragmento `#k=` fica só no navegador. Ao alterar `t/index.html`, copiar de novo para `404.html`.
+- `robots.txt`: manter `Disallow: /codes/` e `Disallow: /t/` mesmo depois de liberar o site nos buscadores.
