@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.pingente",
+      "sha256_cert_fingerprints": [
+        "4F:A5:CC:CC:AB:F5:DA:50:CF:C7:00:01:0D:99:09:A7:29:20:81:75:A6:CA:C2:B9:FA:62:F2:52:1A:61:01:6B",
+        "BF:08:8A:3A:A5:3C:68:94:C2:5D:46:84:D3:53:6B:5C:25:8D:71:05:D7:09:18:03:EB:43:AF:A5:AD:3C:35:41"
+      ]
+    }
+  }
+]
