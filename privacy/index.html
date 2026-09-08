@@ -1,103 +1,47 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en" data-lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>pingente — política de privacidade</title>
+  <title data-lang="en-US">pingente — privacy policy</title>
+  
+  
   <meta name="description" content="Política de privacidade do app Pingente: sem conta, sem nuvem, dados no seu aparelho. Privacy policy · Política de privacidad.">
   <link rel="canonical" href="https://pingente.app/privacy/">
   <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
   <meta name="theme-color" content="#F2EEE4">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script src="/assets/js/lang.js" defer></script>
+
+  <link rel="alternate" hreflang="en" href="https://pingente.app/privacy/">
+  <link rel="alternate" hreflang="pt-BR" href="https://pingente.app/pt/privacy/">
+  <link rel="alternate" hreflang="es" href="https://pingente.app/es/privacy/">
+  <link rel="alternate" hreflang="x-default" href="https://pingente.app/privacy/">
 </head>
 <body>
 
 <header class="topo">
   <div class="topo-inner">
     <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
-    <nav class="nav-desktop" aria-label="Seções">
-      <a href="/#como-funciona">como funciona</a>
-      <a href="/#faces">faces</a>
-      <a href="/#onde-comprar">onde comprar</a>
-      <a href="/#faq">FAQ</a>
-      <a class="nav-destaque" href="/revendedores/">revendedores</a>
-    </nav>
+    <div class="topo-direita">
+      <nav class="nav-desktop" aria-label="Menu">
+        <a href="/#how-it-works"><span class="i18n" data-lang="en-US">how it works</span></a>
+        <a href="/#faces"><span class="i18n" data-lang="en-US">faces</span></a>
+        <a href="/#faq">FAQ</a>
+        <a class="nav-destaque" href="/resellers/"><span class="i18n" data-lang="en-US">resellers</span></a>
+      </nav>
+      <nav class="lang-switch lang-switch--topo" data-lang-switch aria-label="Language"><a href="/privacy/" hreflang="en" lang="en" aria-current="page">🇺🇸 English</a><a href="/pt/privacy/" hreflang="pt-BR" lang="pt-BR">🇧🇷 Português</a><a href="/es/privacy/" hreflang="es" lang="es">🇪🇸 Español</a></nav>
+    </div>
   </div>
 </header>
 
 <main class="legal-wrap">
-  <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
-    <button type="button" data-lang="pt-BR" lang="pt-BR" aria-pressed="false">🇧🇷 Português</button>
-    <button type="button" data-lang="en-US" lang="en" aria-pressed="false">🇺🇸 English</button>
-    <button type="button" data-lang="es-419" lang="es" aria-pressed="false">🇪🇸 Español</button>
-  </div>
 
   <!-- ============================== pt-BR ============================== -->
-  <section data-lang="pt-BR" lang="pt-BR" data-title="pingente — política de privacidade">
-    <p class="eyebrow">Política de privacidade</p>
-    <h1>Sem conta. Sem nuvem. Seus dados ficam no seu aparelho.</h1>
-    <p class="atualizado">Última atualização: 3 de setembro de 2026 · Aplica-se ao app <strong>Pingente</strong> (Android, pacote <code>app.pingente</code>) e ao site pingente.app.</p>
-
-    <h2>1. Quem somos</h2>
-    <p>O Pingente é um aplicativo que envia imagens ("faces") para chaveiros com tela de tinta eletrônica por Bluetooth. Responsável pelo app: Camilo Carromeu (Pingente), Campo Grande, MS, Brasil. Contato: <a href="mailto:contact@pingente.app">contact@pingente.app</a>.</p>
-
-    <h2>2. O que o app não faz</h2>
-    <ul>
-      <li>Não pede cadastro, e-mail ou senha para funcionar.</li>
-      <li>Não sobe suas faces, notas, fotos, eventos da agenda ou localização para nenhum servidor nosso.</li>
-      <li>Não usa rastreadores de publicidade nem vende dados.</li>
-    </ul>
-
-    <h2>3. O que fica só no seu celular</h2>
-    <p>Tudo o que você cria no app é armazenado localmente e sai do aparelho apenas em direção ao chaveiro, pelo Bluetooth: notas, escrita à mão, fotos e carrossel, QR de Wi-Fi e PIX, mensagem de contato, histórico de faces e a lista de chaveiros conhecidos. O backup do sistema Android (Google One ou transferência entre aparelhos) pode copiar esses dados conforme as suas configurações do Android, não as nossas.</p>
-
-    <h2>4. Permissões e por que pedimos</h2>
-    <table>
-      <tr><th>Permissão</th><th>Para quê</th><th>Sai do aparelho?</th></tr>
-      <tr><td>Bluetooth (procurar e conectar)</td><td>Encontrar o chaveiro e enviar a face.</td><td>Só para o chaveiro.</td></tr>
-      <tr><td>Localização</td><td>O Android exige localização para buscar dispositivos Bluetooth. A face Clima usa a sua posição aproximada para obter a previsão.</td><td>Apenas as coordenadas aproximadas, enviadas ao serviço de previsão do tempo quando a face Clima está ativa. Não guardamos.</td></tr>
-      <tr><td>Notificação persistente / serviço em primeiro plano</td><td>Manter a sincronização automática por proximidade com a tela apagada. Você pode desligar.</td><td>Não.</td></tr>
-      <tr><td>Agenda (opcional)</td><td>Ler o próximo evento para a face Próximo evento.</td><td>Não. É lido e desenhado no aparelho.</td></tr>
-      <tr><td>Fotos (opcional)</td><td>Escolher imagens para as faces Foto e Carrossel.</td><td>Não. Só para o chaveiro.</td></tr>
-    </table>
-
-    <h2>5. O que pode sair do aparelho, e para quem</h2>
-    <ul>
-      <li><strong>Previsão do tempo</strong> (face Clima): coordenadas aproximadas enviadas a um serviço público de meteorologia para obter a previsão. Sem identificação sua.</li>
-      <li><strong>Cotação do bitcoin</strong> (face BTC): consulta a um serviço público de cotações, sem dados pessoais.</li>
-      <li><strong>Ativação e compras</strong>: para ativar um chaveiro, o app fala com o nosso servidor enviando o identificador do chaveiro, o recibo da compra feita na loja (Google Play ou App Store) ou o código de ativação usado, e a impressão (hash) de uma chave de posse aleatória gerada no seu aparelho. Isso serve apenas para registrar a ativação permanente, evitar cobranças duplicadas e impedir que outro celular assuma a posse do seu chaveiro. Pagamentos são processados pela loja; não vemos dados de cartão.</li>
-      <li><strong>Relatórios de erro</strong>: se o app travar, um relatório técnico (modelo do aparelho, versão do Android e do app, rastro do erro) pode ser enviado ao serviço Sentry para corrigirmos o problema. Não inclui suas faces, fotos ou localização.</li>
-    </ul>
-
-    <h2>6. Compras no site</h2>
-    <p>Os pacotes de códigos de ativação vendidos em pingente.app são processados pela <strong>Paddle.com Market Ltd</strong>, que atua como Merchant of Record: é a Paddle quem recebe os seus dados de pagamento, emite a fatura e recolhe os impostos, conforme a <a href="https://www.paddle.com/legal/privacy" rel="noopener">política de privacidade da Paddle</a>. O Pingente não vê dados de cartão. Do checkout, o nosso servidor guarda apenas o identificador da transação, o e-mail informado na compra e os códigos gerados, para entregar os códigos e prestar suporte ou reembolso. Base legal: execução de contrato (LGPD art. 7º, V; GDPR art. 6(1)(b)). Retenção: 5 anos após a compra, por obrigação fiscal.</p>
-
-    <h2>7. Retenção</h2>
-    <p>Os registros de ativação ficam no nosso servidor enquanto o chaveiro existir, porque são eles que garantem a ativação permanente. Relatórios de erro são apagados automaticamente após 90 dias. Os dados locais são apagados quando você desinstala o app ou limpa os dados.</p>
-
-    <h2>8. Bases legais (LGPD e GDPR)</h2>
-    <ul>
-      <li><strong>Execução do serviço</strong> (LGPD art. 7º, V; GDPR art. 6(1)(b)): registro de ativação e verificação de compras.</li>
-      <li><strong>Legítimo interesse</strong> (LGPD art. 7º, IX; GDPR art. 6(1)(f)): relatórios de erro, apenas para manter o app funcionando.</li>
-      <li><strong>Consentimento</strong> (LGPD art. 7º, I; GDPR art. 6(1)(a)): permissões opcionais de localização, agenda e fotos, concedidas pelo Android e revogáveis a qualquer momento nas configurações do aparelho.</li>
-    </ul>
-
-    <h2>9. Transferências internacionais</h2>
-    <p>O servidor de ativação roda na rede global da Cloudflare e os relatórios de erro são processados pelo Sentry (Estados Unidos), ambos sob acordos de tratamento de dados com cláusulas contratuais padrão. Não designamos representante na União Europeia ou no Reino Unido com base na exceção do art. 27(2) do GDPR (tratamento ocasional, sem dados sensíveis e de baixo risco).</p>
-
-    <h2>10. Seus direitos</h2>
-    <p>Você pode pedir confirmação, acesso, correção, anonimização ou eliminação, portabilidade, informação sobre compartilhamento e revogação do consentimento, além de se opor a um tratamento, escrevendo para <a href="mailto:contact@pingente.app">contact@pingente.app</a>. Respondemos em até 15 dias. Como não exigimos conta, precisaremos do identificador do chaveiro para localizar o registro. Você também pode reclamar à ANPD (Brasil) ou à autoridade de proteção de dados do seu país na UE/EEE ou no Reino Unido.</p>
-
-    <h2>11. Crianças</h2>
-    <p>O app não é dirigido a menores de 13 anos e não coleta conscientemente dados de crianças.</p>
-
-    <h2>12. Mudanças</h2>
-    <p>Se esta política mudar, a nova versão será publicada nesta página com a data de atualização.</p>
-  </section>
+  
 
   <!-- ============================== en-US ============================== -->
-  <section data-lang="en-US" lang="en" data-title="pingente — privacy policy" hidden>
+  <section data-lang="en-US" lang="en" data-title="pingente — privacy policy">
     <p class="eyebrow">Privacy policy</p>
     <h1>No account. No cloud. Your data stays on your device.</h1>
     <p class="atualizado">Last updated: September 3, 2026 · Applies to the <strong>Pingente</strong> app (Android, package <code>app.pingente</code>) and the pingente.app website.</p>
@@ -160,80 +104,20 @@
   </section>
 
   <!-- ============================== es-419 ============================== -->
-  <section data-lang="es-419" lang="es" data-title="pingente — política de privacidad" hidden>
-    <p class="eyebrow">Política de privacidad</p>
-    <h1>Sin cuenta. Sin nube. Tus datos se quedan en tu dispositivo.</h1>
-    <p class="atualizado">Última actualización: 3 de septiembre de 2026 · Se aplica a la app <strong>Pingente</strong> (Android, paquete <code>app.pingente</code>) y al sitio pingente.app.</p>
-
-    <h2>1. Quiénes somos</h2>
-    <p>Pingente es una aplicación que envía imágenes ("caras") a llaveros con pantalla de tinta electrónica por Bluetooth. Responsable de la app: Camilo Carromeu (Pingente), Campo Grande, MS, Brasil. Contacto: <a href="mailto:contact@pingente.app">contact@pingente.app</a>.</p>
-
-    <h2>2. Lo que la app no hace</h2>
-    <ul>
-      <li>No pide registro, correo ni contraseña para funcionar.</li>
-      <li>No sube tus caras, notas, fotos, eventos de la agenda ni ubicación a ningún servidor nuestro.</li>
-      <li>No usa rastreadores publicitarios ni vende datos.</li>
-    </ul>
-
-    <h2>3. Lo que se queda solo en tu celular</h2>
-    <p>Todo lo que creas en la app se guarda localmente y sale del dispositivo únicamente hacia el llavero, por Bluetooth: notas, escritura a mano, fotos y carrusel, códigos QR de Wi-Fi y PIX, el mensaje de contacto, el historial de caras y la lista de llaveros conocidos. La copia de seguridad del sistema Android (Google One o transferencia entre dispositivos) puede copiar esos datos según tu configuración de Android, no la nuestra.</p>
-
-    <h2>4. Permisos y por qué los pedimos</h2>
-    <table>
-      <tr><th>Permiso</th><th>Para qué</th><th>¿Sale del dispositivo?</th></tr>
-      <tr><td>Bluetooth (buscar y conectar)</td><td>Encontrar el llavero y enviar la cara.</td><td>Solo hacia el llavero.</td></tr>
-      <tr><td>Ubicación</td><td>Android exige la ubicación para buscar dispositivos Bluetooth. La cara Clima usa tu posición aproximada para obtener el pronóstico.</td><td>Solo las coordenadas aproximadas, enviadas al servicio meteorológico mientras la cara Clima está activa. No las guardamos.</td></tr>
-      <tr><td>Notificación permanente / servicio en primer plano</td><td>Mantener la sincronización automática por proximidad con la pantalla apagada. Puedes desactivarla.</td><td>No.</td></tr>
-      <tr><td>Agenda (opcional)</td><td>Leer el próximo evento para la cara Próximo evento.</td><td>No. Se lee y se dibuja en el dispositivo.</td></tr>
-      <tr><td>Fotos (opcional)</td><td>Elegir imágenes para las caras Foto y Carrusel.</td><td>No. Solo hacia el llavero.</td></tr>
-    </table>
-
-    <h2>5. Lo que puede salir del dispositivo, y hacia quién</h2>
-    <ul>
-      <li><strong>Pronóstico del tiempo</strong> (cara Clima): coordenadas aproximadas enviadas a un servicio meteorológico público para obtener el pronóstico. Sin identificarte.</li>
-      <li><strong>Cotización del bitcoin</strong> (cara BTC): consulta a un servicio público de cotizaciones, sin datos personales.</li>
-      <li><strong>Activación y compras</strong>: para activar un llavero, la app se comunica con nuestro servidor enviando el identificador del llavero, el recibo de la compra hecha en la tienda (Google Play o App Store) o el código de activación utilizado, y la huella (hash) de una clave de posesión aleatoria generada en tu dispositivo. Sirve únicamente para registrar la activación permanente, evitar cobros duplicados e impedir que otro celular tome posesión de tu llavero. Los pagos los procesa la tienda; no vemos datos de tarjeta.</li>
-      <li><strong>Informes de errores</strong>: si la app falla, puede enviarse un informe técnico (modelo del dispositivo, versión de Android y de la app, traza del error) al servicio Sentry para que corrijamos el problema. No incluye tus caras, fotos ni ubicación.</li>
-    </ul>
-
-    <h2>6. Compras en el sitio</h2>
-    <p>Los paquetes de códigos de activación vendidos en pingente.app los procesa <strong>Paddle.com Market Ltd</strong>, que actúa como Merchant of Record: Paddle recibe tus datos de pago, emite la factura y recauda los impuestos según la <a href="https://www.paddle.com/legal/privacy" rel="noopener">política de privacidad de Paddle</a>. Pingente no ve datos de tarjeta. Del checkout, nuestro servidor guarda solo el identificador de la transacción, el correo indicado en la compra y los códigos generados, para entregar los códigos y dar soporte o reembolso. Base legal: ejecución de un contrato (LGPD art. 7, V; RGPD art. 6(1)(b)). Conservación: 5 años después de la compra, por obligación fiscal.</p>
-
-    <h2>7. Conservación</h2>
-    <p>Los registros de activación permanecen en nuestro servidor mientras exista el llavero, porque son los que garantizan la activación permanente. Los informes de errores se borran automáticamente a los 90 días. Los datos locales se borran cuando desinstalas la app o limpias sus datos.</p>
-
-    <h2>8. Bases legales (LGPD y RGPD)</h2>
-    <ul>
-      <li><strong>Ejecución del servicio</strong> (LGPD art. 7, V; RGPD art. 6(1)(b)): registro de activación y verificación de compras.</li>
-      <li><strong>Interés legítimo</strong> (LGPD art. 7, IX; RGPD art. 6(1)(f)): informes de errores, solo para mantener la app funcionando.</li>
-      <li><strong>Consentimiento</strong> (LGPD art. 7, I; RGPD art. 6(1)(a)): los permisos opcionales de ubicación, agenda y fotos, concedidos a través de Android y revocables en cualquier momento en los ajustes del dispositivo.</li>
-    </ul>
-
-    <h2>9. Transferencias internacionales</h2>
-    <p>El servidor de activación funciona en la red global de Cloudflare y los informes de errores los procesa Sentry (Estados Unidos), ambos bajo acuerdos de tratamiento de datos con cláusulas contractuales tipo. No hemos designado representante en la Unión Europea ni en el Reino Unido, acogiéndonos a la excepción del art. 27(2) del RGPD (tratamiento ocasional, de bajo riesgo y sin categorías especiales de datos).</p>
-
-    <h2>10. Tus derechos</h2>
-    <p>Puedes pedir confirmación, acceso, rectificación, anonimización o eliminación, portabilidad, información sobre el intercambio y la revocación del consentimiento, y oponerte a un tratamiento, escribiendo a <a href="mailto:contact@pingente.app">contact@pingente.app</a>. Respondemos en un plazo de 15 días. Como no exigimos cuenta, necesitaremos el identificador del llavero para ubicar el registro. También puedes presentar una reclamación ante la ANPD (Brasil) o ante la autoridad de protección de datos de tu país en la UE/EEE o el Reino Unido.</p>
-
-    <h2>11. Menores</h2>
-    <p>La app no está dirigida a menores de 13 años y no recopila conscientemente datos de niños.</p>
-
-    <h2>12. Cambios</h2>
-    <p>Si esta política cambia, la nueva versión se publicará en esta página con la fecha de actualización.</p>
-  </section>
+  
 </main>
 
 <footer class="rodape">
   <div class="rodape-inner">
     <div>
       <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
-      <p class="rodape-selo"><span class="i18n" data-lang="pt-BR">sem conta · sem nuvem · sem assinatura</span><span class="i18n" data-lang="en-US" hidden>no account · no cloud · no subscription</span><span class="i18n" data-lang="es-419" hidden>sin cuenta · sin nube · sin suscripción</span></p>
+      <p class="rodape-selo"><span class="i18n" data-lang="en-US">no account · no cloud · no subscription</span></p>
     </div>
     <div class="rodape-col-b">
-      <nav class="rodape-links i18n" data-lang="pt-BR" aria-label="Legal"><a href="/terms/">Termos de uso</a><a href="/refund/">Reembolso</a><a href="/privacy/">Privacidade</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
-      <nav class="rodape-links i18n" data-lang="en-US" aria-label="Legal" hidden><a href="/terms/">Terms of use</a><a href="/refund/">Refunds</a><a href="/privacy/">Privacy</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
-      <nav class="rodape-links i18n" data-lang="es-419" aria-label="Legal" hidden><a href="/terms/">Términos de uso</a><a href="/refund/">Reembolsos</a><a href="/privacy/">Privacidad</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
-      <p class="legal"><span class="i18n" data-lang="pt-BR">pingente.app — o hardware é montado e vendido por revendedores independentes.</span><span class="i18n" data-lang="en-US" hidden>pingente.app — hardware is assembled and sold by independent resellers.</span><span class="i18n" data-lang="es-419" hidden>pingente.app — el hardware lo montan y venden revendedores independientes.</span></p>
+      
+      <nav class="rodape-links i18n" data-lang="en-US" aria-label="Legal"><a href="/terms/">Terms of use</a><a href="/refund/">Refunds</a><a href="/privacy/">Privacy</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
+      
+      <p class="legal"><span class="i18n" data-lang="en-US">pingente.app — hardware is assembled and sold by independent resellers.</span></p>
     </div>
   </div>
 </footer>

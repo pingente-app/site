@@ -1,20 +1,28 @@
-/* pingente.app — troca de idioma das páginas trilíngues (pt-BR · en-US · es-419).
-   Blocos: <section data-lang="pt-BR" lang="pt-BR" data-title="…"> e <span class="i18n" data-lang="…">.
-   Detecção: ?lang= → localStorage → idiomas do navegador → en-US (fallback). */
+/* pingente.app — idioma.
+   Dois modos:
+   1. Páginas geradas por idioma (tools/build.js): <html data-lang="pt-BR"> fixa o idioma; o seletor é
+      um conjunto de links (.lang-switch a). Aqui o script só guarda a escolha e, na raiz em inglês,
+      sugere /pt/ ou /es/ na primeira visita de um navegador nesses idiomas.
+   2. Páginas trilíngues de runtime (/t/, /codes/, 404): blocos <section data-lang> e <span class="i18n">
+      alternados em JavaScript; detecção: ?lang= → localStorage → idiomas do navegador → en-US. */
 (function () {
   var LANGS = ['pt-BR', 'en-US', 'es-419'];
+  var PREFIX = { 'pt-BR': '/pt', 'en-US': '', 'es-419': '/es' };
   var KEY = 'pingente-lang';
   var LEGACY_KEY = 'pingente-privacy-lang';
   var SHORT = { 'pt-BR': 'pt', 'en-US': 'en', 'es-419': 'es' };
-  var current = null;
+  var fixed = document.documentElement.getAttribute('data-lang');
+  var current = LANGS.indexOf(fixed) >= 0 ? fixed : null;
 
-  function detect() {
-    var q = new URLSearchParams(location.search).get('lang');
-    if (LANGS.indexOf(q) >= 0) return q;
+  function stored() {
     try {
       var s = localStorage.getItem(KEY) || localStorage.getItem(LEGACY_KEY);
       if (LANGS.indexOf(s) >= 0) return s;
     } catch (e) {}
+    return null;
+  }
+
+  function fromBrowser() {
     var prefs = navigator.languages || [navigator.language || 'en'];
     for (var i = 0; i < prefs.length; i++) {
       var p = String(prefs[i]).toLowerCase();
@@ -25,7 +33,15 @@
     return 'en-US';
   }
 
-  function apply(lang, remember) {
+  function detect() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (LANGS.indexOf(q) >= 0) return q;
+    return stored() || fromBrowser();
+  }
+
+  function remember(lang) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+
+  function apply(lang, save) {
     if (LANGS.indexOf(lang) < 0) lang = 'en-US';
     current = lang;
     document.querySelectorAll('section[data-lang], .i18n[data-lang]').forEach(function (el) {
@@ -39,7 +55,7 @@
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
     });
-    if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+    if (save) remember(lang);
     try { document.dispatchEvent(new CustomEvent('pingente:lang', { detail: lang })); } catch (e) {}
   }
 
@@ -50,12 +66,34 @@
     apply: apply
   };
 
-  function init() {
+  function initFixed() {
+    // Escolha explícita no seletor → lembrar; assim a raiz em inglês não sugere de novo.
+    document.querySelectorAll('.lang-switch a[hreflang]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var code = a.getAttribute('lang') === 'pt-BR' ? 'pt-BR' : a.getAttribute('lang') === 'es' ? 'es-419' : 'en-US';
+        remember(code);
+      });
+    });
+    // Primeira visita à raiz (inglês) vindo de um navegador em pt/es: vai para a versão do idioma.
+    if (fixed === 'en-US' && !stored() && !new URLSearchParams(location.search).has('lang')) {
+      var want = fromBrowser();
+      if (want !== 'en-US') {
+        remember(want);
+        location.replace(PREFIX[want] + location.pathname + location.search + location.hash);
+        return;
+      }
+    }
+    if (fixed) remember(fixed);
+  }
+
+  function initRuntime() {
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
       b.addEventListener('click', function () { apply(b.getAttribute('data-lang'), true); });
     });
     apply(detect(), false);
   }
+
+  function init() { if (fixed) initFixed(); else initRuntime(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();

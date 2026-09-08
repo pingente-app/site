@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://pingente.app/</loc></url>
-  <url><loc>https://pingente.app/revendedores/</loc></url>
-  <url><loc>https://pingente.app/privacy/</loc></url>
-  <url><loc>https://pingente.app/privacy/delete/</loc></url>
+  <url><loc>https://pingente.app/pt/</loc></url>
+  <url><loc>https://pingente.app/es/</loc></url>
+  <url><loc>https://pingente.app/resellers/</loc></url>
+  <url><loc>https://pingente.app/pt/resellers/</loc></url>
+  <url><loc>https://pingente.app/es/resellers/</loc></url>
   <url><loc>https://pingente.app/terms/</loc></url>
+  <url><loc>https://pingente.app/pt/terms/</loc></url>
+  <url><loc>https://pingente.app/es/terms/</loc></url>
+  <url><loc>https://pingente.app/privacy/</loc></url>
+  <url><loc>https://pingente.app/pt/privacy/</loc></url>
+  <url><loc>https://pingente.app/es/privacy/</loc></url>
+  <url><loc>https://pingente.app/privacy/delete/</loc></url>
+  <url><loc>https://pingente.app/pt/privacy/delete/</loc></url>
+  <url><loc>https://pingente.app/es/privacy/delete/</loc></url>
   <url><loc>https://pingente.app/refund/</loc></url>
+  <url><loc>https://pingente.app/pt/refund/</loc></url>
+  <url><loc>https://pingente.app/es/refund/</loc></url>
 </urlset>

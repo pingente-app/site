@@ -2,10 +2,15 @@
 
 Site do **Pingente** — landing page, página de revendedores e arquivos dos cases para impressão 3D. Publicado via GitHub Pages em <https://pingente.app>.
 
-## Estrutura
+## Estrutura e idiomas (desde 2026-09-08)
 
-- `index.html` — landing principal
-- `revendedores/index.html` — subpágina B2B (guia de compra, tiers de ativação, repositório de cases)
+**Inglês é o idioma padrão, na raiz.** Português vive em `/pt/…` e espanhol em `/es/…`, com as mesmas rotas em inglês (`/resellers/`, `/terms/`, `/privacy/`, `/privacy/delete/`, `/refund/`). As URLs antigas em português (`/revendedores/`) redirecionam.
+
+- `src/pages/*.html` — **fontes** trilíngues (elementos com `data-lang="en-US|pt-BR|es-419"`, `<title>`/`<meta>` por idioma, seletor `<nav data-lang-switch>`). É aqui que se edita.
+- `tools/build.js` — gerador: `bun tools/build.js` escreve as páginas por idioma (raiz, `/pt/`, `/es/`) com `<html lang>`, canonical, `hreflang` e o seletor como links; localiza os links de `/t/` e `/codes/` (páginas de runtime, trilíngues com troca em JS) e copia `t/index.html` para `404.html`; regenera `sitemap.xml`. **Rodar antes de commitar** qualquer mudança nas fontes; os arquivos gerados são versionados (GitHub Pages não builda).
+- `index.html`, `resellers/`, `terms/`, `privacy/`, `refund/`, `pt/**`, `es/**` — **gerados**, não editar à mão.
+- `revendedores/index.html` — redirecionamento (meta refresh + JS por idioma do navegador) para `/resellers/`.
+- `assets/js/lang.js` — nas páginas geradas só guarda a escolha e, na raiz em inglês, manda navegadores em pt/es para `/pt/` ou `/es/` na primeira visita; em `/t/`, `/codes/` e `404.html` faz a troca em tempo real.
 - `assets/css/site.css` — folha única (tokens + componentes das duas páginas)
 - `assets/img/` — identidade (lockup/ícone SVG), hero, faces 250×122 (cores puras)
 - `assets/fonts/` — Manrope variável (woff2, subset latin) auto-hospedada

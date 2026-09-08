@@ -570,3 +570,17 @@ section[hidden], .i18n[hidden] { display: none !important; }
 }
 .tag-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .mode-tag [data-mode="notfound"], .mode-notfound [data-mode="tag"] { display: none !important; }
+
+/* Seletor de idioma por link (páginas geradas por tools/build.js). */
+.lang-switch a {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.95rem; padding: 8px 14px; border-radius: 999px; text-decoration: none;
+  border: 1px solid rgba(38, 36, 31, 0.25); background: transparent; color: var(--tinta);
+}
+.lang-switch a[aria-current="page"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+.lang-switch a:hover { border-color: var(--vermelho); }
+.lang-switch--topo { margin: 0; gap: 4px; flex-wrap: nowrap; }
+.lang-switch--topo a { font-size: 12px; padding: 5px 9px; }
+.lang-switch--topo .rotulo { display: none; }
+@media (min-width: 768px) { .lang-switch--topo a { font-size: 13px; padding: 6px 12px; } .lang-switch--topo .rotulo { display: inline; } }
+.topo-inner .topo-direita { display: flex; align-items: center; gap: 16px; }
