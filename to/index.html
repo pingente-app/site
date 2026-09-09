@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — enviar um cartão</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <script src="/assets/js/lang.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" defer></script>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js" defer></script>
+  <script src="/assets/js/paddle-config.js" defer></script>
+  <!-- /to/#CODIGO — página de envio de cartão (story 5.20). O código é o endereço da tag de
+       quem recebe; quem envia monta o cartão aqui, paga na Paddle e pronto. Sem conta. -->
+  <style>
+    .cartao-form { display: grid; gap: 14px; margin-top: 18px; }
+    .cartao-form label { font-weight: 700; display: block; margin-bottom: 6px; }
+    .cartao-form input[type="text"], .cartao-form textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 10px 12px; border: 1px solid rgba(0,0,0,.18); border-radius: 12px; background: #FBF9F3; }
+    .cartao-form textarea { min-height: 84px; resize: vertical; }
+    .cartao-form .contador { font-size: 12px; color: #6b6b6b; text-align: right; }
+    .recorte { max-height: 360px; background: #eee; border-radius: 12px; overflow: hidden; }
+    .recorte img { max-width: 100%; display: block; }
+    .previa { display: grid; gap: 6px; }
+    .previa canvas { width: 100%; max-width: 500px; image-rendering: pixelated; border: 4px solid #1a1a1a; border-radius: 6px; background: #FAF8F1; }
+    .previa small { color: #6b6b6b; }
+    .cartao-form .acoes { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .estado.ok { color: #1f7a3a; font-weight: 700; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+    <nav class="nav-desktop" aria-label="Seções">
+      <a href="/#how-it-works">como funciona</a>
+      <a href="/#faq">FAQ</a>
+      <a class="nav-destaque" href="/resellers/">revendedores</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal-wrap">
+  <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="pt-BR" lang="pt-BR" aria-pressed="false">🇧🇷 Português</button>
+    <button type="button" data-lang="en-US" lang="en" aria-pressed="false">🇺🇸 English</button>
+    <button type="button" data-lang="es-419" lang="es" aria-pressed="false">🇪🇸 Español</button>
+  </div>
+
+  <section data-lang="pt-BR" lang="pt-BR" data-title="pingente — enviar um cartão">
+    <p class="eyebrow">Cartão</p>
+    <h1>Mande um cartão para a tag <span class="tag-id" data-code>—</span></h1>
+    <p class="sub">Uma foto, uma mensagem e o seu nome. O cartão aparece na tela e-ink de quem recebe, em preto e branco pontilhado, com um QR que abre o cartão inteiro no celular. Custa <strong data-preco>US$ 0,99</strong>, pago uma vez, sem conta.</p>
+    <p class="estado erro" data-invalido hidden>Este endereço não existe ou foi trocado. Peça a quem vai receber para mandar o link de novo.</p>
+    <p class="estado ok" data-enviado hidden>Cartão enviado! Ele aparece na tag na próxima atualização (em até 10 minutos, com o celular por perto).</p>
+  </section>
+  <section data-lang="en-US" lang="en" data-title="pingente — send a card" hidden>
+    <p class="eyebrow">Card</p>
+    <h1>Send a card to tag <span class="tag-id" data-code>—</span></h1>
+    <p class="sub">A photo, a message and your name. The card shows up on the recipient's e-ink screen, dithered in black and white, with a QR code that opens the full card on their phone. It costs <strong data-preco>US$ 0.99</strong>, paid once, no account.</p>
+    <p class="estado erro" data-invalido hidden>This address does not exist or was changed. Ask the recipient to send the link again.</p>
+    <p class="estado ok" data-enviado hidden>Card sent! It appears on the tag at the next update (within 10 minutes, with the phone nearby).</p>
+  </section>
+  <section data-lang="es-419" lang="es" data-title="pingente — enviar una tarjeta" hidden>
+    <p class="eyebrow">Tarjeta</p>
+    <h1>Envía una tarjeta a la tag <span class="tag-id" data-code>—</span></h1>
+    <p class="sub">Una foto, un mensaje y tu nombre. La tarjeta aparece en la pantalla e-ink de quien la recibe, en blanco y negro punteado, con un QR que abre la tarjeta completa en el teléfono. Cuesta <strong data-preco>US$ 0,99</strong>, se paga una vez, sin cuenta.</p>
+    <p class="estado erro" data-invalido hidden>Esta dirección no existe o fue cambiada. Pide a quien la recibe que envíe el enlace otra vez.</p>
+    <p class="estado ok" data-enviado hidden>¡Tarjeta enviada! Aparece en la tag en la próxima actualización (en hasta 10 minutos, con el teléfono cerca).</p>
+  </section>
+
+  <form class="cartao-form" data-form hidden>
+    <div>
+      <label class="i18n" data-lang="pt-BR">1. Foto</label><label class="i18n" data-lang="en-US" hidden>1. Photo</label><label class="i18n" data-lang="es-419" hidden>1. Foto</label>
+      <input type="file" accept="image/*" data-foto>
+      <div class="recorte" data-recorte hidden><img alt="" data-recorte-img></div>
+    </div>
+    <div class="previa" data-previa hidden>
+      <canvas width="250" height="122" data-canvas></canvas>
+      <small class="i18n" data-lang="pt-BR">Prévia de como fica na tag (2,1"). Arraste a foto acima para escolher o recorte.</small><small class="i18n" data-lang="en-US" hidden>Preview of the tag (2.1"). Drag the photo above to choose the crop.</small><small class="i18n" data-lang="es-419" hidden>Vista previa en la tag (2,1"). Arrastra la foto de arriba para elegir el recorte.</small>
+    </div>
+    <div>
+      <label class="i18n" data-lang="pt-BR">2. Mensagem</label><label class="i18n" data-lang="en-US" hidden>2. Message</label><label class="i18n" data-lang="es-419" hidden>2. Mensaje</label>
+      <textarea maxlength="140" data-mensagem></textarea>
+      <div class="contador"><span data-contador>0</span>/140</div>
+    </div>
+    <div>
+      <label class="i18n" data-lang="pt-BR">3. Seu nome</label><label class="i18n" data-lang="en-US" hidden>3. Your name</label><label class="i18n" data-lang="es-419" hidden>3. Tu nombre</label>
+      <input type="text" maxlength="24" data-nome required>
+    </div>
+    <div class="acoes">
+      <button type="submit" class="btn-copiar solido i18n" data-lang="pt-BR" data-enviar disabled>Pagar e enviar</button>
+      <button type="submit" class="btn-copiar solido i18n" data-lang="en-US" data-enviar disabled hidden>Pay and send</button>
+      <button type="submit" class="btn-copiar solido i18n" data-lang="es-419" data-enviar disabled hidden>Pagar y enviar</button>
+      <span class="estado erro" data-erro hidden></span>
+    </div>
+  </form>
+</main>
+
+<footer class="rodape">
+  <div class="rodape-inner">
+    <div>
+      <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+      <p class="rodape-selo"><span class="i18n" data-lang="pt-BR">sem conta · sem nuvem · sem assinatura</span><span class="i18n" data-lang="en-US" hidden>no account · no cloud · no subscription</span><span class="i18n" data-lang="es-419" hidden>sin cuenta · sin nube · sin suscripción</span></p>
+    </div>
+    <div class="rodape-col-b">
+      <nav class="rodape-links i18n" data-lang="pt-BR" aria-label="Legal"><a href="/pt/terms/">Termos de uso</a><a href="/pt/refund/">Reembolso</a><a href="/pt/privacy/">Privacidade</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
+      <nav class="rodape-links i18n" data-lang="en-US" aria-label="Legal" hidden><a href="/terms/">Terms of use</a><a href="/refund/">Refunds</a><a href="/privacy/">Privacy</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
+      <nav class="rodape-links i18n" data-lang="es-419" aria-label="Legal" hidden><a href="/es/terms/">Términos de uso</a><a href="/es/refund/">Reembolsos</a><a href="/es/privacy/">Privacidad</a><a href="mailto:contact@pingente.app">contact@pingente.app</a></nav>
+      <p class="legal"><span class="i18n" data-lang="pt-BR">pingente.app — o hardware é montado e vendido por revendedores independentes.</span><span class="i18n" data-lang="en-US" hidden>pingente.app — hardware is assembled and sold by independent resellers.</span><span class="i18n" data-lang="es-419" hidden>pingente.app — el hardware lo montan y venden revendedores independientes.</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var API = 'https://pingente-backend.pingente-backend.workers.dev';
+  var params = new URLSearchParams(location.search);
+  var code = (location.hash.replace('#', '') || params.get('code') || '').toUpperCase();
+  var sent = params.get('sent');
+  var $ = function (sel) { return document.querySelector(sel); };
+  var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+  $$('[data-code]').forEach(function (el) { el.textContent = code || '—'; });
+
+  if (sent) { $$('[data-enviado]').forEach(function (el) { el.hidden = false; }); return; }
+  if (!/^[A-Z2-9]{8}$/.test(code)) { $$('[data-invalido]').forEach(function (el) { el.hidden = false; }); return; }
+
+  fetch(API + '/v1/cards/address?code=' + code).then(function (r) {
+    if (!r.ok) throw new Error('invalid');
+    $('[data-form]').hidden = false;
+  }).catch(function () { $$('[data-invalido]').forEach(function (el) { el.hidden = false; }); });
+
+  // Preço no idioma do navegador (Paddle cobra em BRL no Brasil).
+  var pt = /^pt/i.test(navigator.language);
+  $$('[data-preco]').forEach(function (el) { el.textContent = pt ? 'R$ 4,90' : 'US$ 0,99'; });
+
+  var cropper = null, jpeg = null;
+  var img = $('[data-recorte-img]');
+  $('[data-foto]').addEventListener('change', function (ev) {
+    var file = ev.target.files && ev.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      img.src = reader.result;
+      $('[data-recorte]').hidden = false;
+      if (cropper) cropper.destroy();
+      cropper = new Cropper(img, { aspectRatio: 2, viewMode: 1, autoCropArea: 1, crop: debounce(render, 120) });
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function debounce(fn, ms) { var t; return function () { clearTimeout(t); t = setTimeout(fn, ms); }; }
+
+  // A tag é 1 bit: a prévia usa o mesmo caminho do app (cinza → contraste → Floyd–Steinberg).
+  function render() {
+    if (!cropper) return;
+    var big = cropper.getCroppedCanvas({ width: 800, height: 400, imageSmoothingQuality: 'high' });
+    jpeg = big.toDataURL('image/jpeg', 0.85);
+    var canvas = $('[data-canvas]'), ctx = canvas.getContext('2d');
+    ctx.drawImage(big, 0, 0, 250, 122);
+    var im = ctx.getImageData(0, 0, 250, 122), d = im.data, w = 250, h = 122, g = new Float32Array(w * h);
+    var lo = 255, hi = 0;
+    for (var i = 0; i < w * h; i++) { var v = 0.299 * d[i * 4] + 0.587 * d[i * 4 + 1] + 0.114 * d[i * 4 + 2]; g[i] = v; if (v < lo) lo = v; if (v > hi) hi = v; }
+    var span = Math.max(1, hi - lo);
+    for (var j = 0; j < w * h; j++) { var n = (g[j] - lo) / span * 255; g[j] = Math.max(0, Math.min(255, (n - 128) * 1.3 + 128)); }
+    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+      var k = y * w + x, old = g[k], nv = old < 128 ? 0 : 255, err = old - nv; g[k] = nv;
+      if (x + 1 < w) g[k + 1] += err * 7 / 16;
+      if (y + 1 < h) { if (x > 0) g[k + w - 1] += err * 3 / 16; g[k + w] += err * 5 / 16; if (x + 1 < w) g[k + w + 1] += err / 16; }
+    }
+    for (var p = 0; p < w * h; p++) { var c = g[p] < 128 ? 0 : 250; d[p * 4] = c; d[p * 4 + 1] = c ? 248 : 0; d[p * 4 + 2] = c ? 241 : 0; d[p * 4 + 3] = 255; }
+    ctx.putImageData(im, 0, 0);
+    $('[data-previa]').hidden = false;
+    check();
+  }
+
+  var msg = $('[data-mensagem]'), nome = $('[data-nome]');
+  msg.addEventListener('input', function () { $('[data-contador]').textContent = msg.value.length; check(); });
+  nome.addEventListener('input', check);
+  function check() { var ok = !!jpeg && nome.value.trim().length > 0; $$('[data-enviar]').forEach(function (b) { b.disabled = !ok; }); }
+
+  function fail(text) { var e = $('[data-erro]'); e.textContent = text; e.hidden = false; }
+
+  $('[data-form]').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    $('[data-erro]').hidden = true;
+    $$('[data-enviar]').forEach(function (b) { b.disabled = true; });
+    fetch(API + '/v1/cards', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: code, sender: nome.value.trim(), message: msg.value.trim(), image: jpeg }) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || r.status); return j; }); })
+      .then(function (card) {
+        var cfg = window.PINGENTE_PADDLE || {};
+        if (cfg.cardsTestMode) {
+          return fetch(API + '/v1/cards/' + card.id + '/pay', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' })
+            .then(function (r) { if (!r.ok) throw new Error('pay ' + r.status); location.replace(location.pathname + '?sent=' + card.id); });
+        }
+        if (!window.Paddle || !cfg.clientToken || !cfg.prices || !cfg.prices.card) throw new Error('checkout indisponível');
+        if (cfg.environment === 'sandbox') window.Paddle.Environment.set('sandbox');
+        window.Paddle.Initialize({ token: cfg.clientToken, eventCallback: function (e) { if (e.name === 'checkout.completed') location.replace(location.pathname + '?sent=' + card.id); } });
+        window.Paddle.Checkout.open({
+          items: [{ priceId: cfg.prices.card, quantity: 1 }],
+          customData: { cardId: card.id },
+          settings: { displayMode: 'overlay', locale: (window.pingenteLang && window.pingenteLang.short && window.pingenteLang.short()) || 'en', successUrl: 'https://pingente.app/to/?sent=' + card.id }
+        });
+      })
+      .catch(function (e) { fail(String(e.message || e)); check(); });
+  });
+})();
+</script>
+
+</body>
+</html>

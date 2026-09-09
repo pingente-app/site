@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — cartão</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/lang.js" defer></script>
+  <!-- /c/#ID — o cartão inteiro (story 5.20). Abrir esta página marca o cartão como lido;
+       a tag troca na próxima atualização. -->
+  <style>
+    .cartao { margin-top: 18px; border: 1px solid rgba(0,0,0,.12); border-radius: 16px; overflow: hidden; background: #fff; }
+    .cartao img { display: block; width: 100%; }
+    .cartao .texto { padding: 18px 20px; }
+    .cartao .mensagem { font-size: 20px; line-height: 1.35; margin: 0 0 12px; white-space: pre-wrap; }
+    .cartao .de { color: #6b6b6b; font-weight: 700; margin: 0; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+  </div>
+</header>
+
+<main class="legal-wrap">
+  <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="pt-BR" lang="pt-BR" aria-pressed="false">🇧🇷 Português</button>
+    <button type="button" data-lang="en-US" lang="en" aria-pressed="false">🇺🇸 English</button>
+    <button type="button" data-lang="es-419" lang="es" aria-pressed="false">🇪🇸 Español</button>
+  </div>
+
+  <section data-lang="pt-BR" lang="pt-BR" data-title="pingente — cartão">
+    <p class="eyebrow">Cartão</p>
+    <h1>Você recebeu um cartão</h1>
+    <p class="estado erro" data-invalido hidden>Este cartão não existe mais (os cartões ficam guardados por 30 dias) ou o link está incompleto.</p>
+  </section>
+  <section data-lang="en-US" lang="en" data-title="pingente — card" hidden>
+    <p class="eyebrow">Card</p>
+    <h1>You got a card</h1>
+    <p class="estado erro" data-invalido hidden>This card no longer exists (cards are kept for 30 days) or the link is incomplete.</p>
+  </section>
+  <section data-lang="es-419" lang="es" data-title="pingente — tarjeta" hidden>
+    <p class="eyebrow">Tarjeta</p>
+    <h1>Recibiste una tarjeta</h1>
+    <p class="estado erro" data-invalido hidden>Esta tarjeta ya no existe (se guardan 30 días) o el enlace está incompleto.</p>
+  </section>
+
+  <article class="cartao" data-cartao hidden>
+    <img alt="" data-imagem>
+    <div class="texto">
+      <p class="mensagem" data-mensagem></p>
+      <p class="de"><span class="i18n" data-lang="pt-BR">de</span><span class="i18n" data-lang="en-US" hidden>from</span><span class="i18n" data-lang="es-419" hidden>de</span> <span data-remetente></span> · <span data-data></span></p>
+    </div>
+  </article>
+
+  <p class="sub" data-cta hidden>
+    <span class="i18n" data-lang="pt-BR">Quer mandar um cartão de volta? Peça o endereço da tag de quem enviou. Ainda não tem um pingente? <a href="/pt/">Veja como funciona</a>.</span>
+    <span class="i18n" data-lang="en-US" hidden>Want to send a card back? Ask for the sender's tag address. No pingente yet? <a href="/">See how it works</a>.</span>
+    <span class="i18n" data-lang="es-419" hidden>¿Quieres responder con una tarjeta? Pide la dirección de la tag de quien envió. ¿Aún no tienes un pingente? <a href="/es/">Mira cómo funciona</a>.</span>
+  </p>
+</main>
+
+<script>
+(function () {
+  var API = 'https://pingente-backend.pingente-backend.workers.dev';
+  var id = (location.hash.replace('#', '') || new URLSearchParams(location.search).get('id') || '').toLowerCase();
+  var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+  function invalid() { $$('[data-invalido]').forEach(function (el) { el.hidden = false; }); }
+  if (!/^[a-z2-9]{16}$/.test(id)) { invalid(); return; }
+  fetch(API + '/v1/cards/' + id).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (card) {
+    document.querySelector('[data-imagem]').src = card.image;
+    document.querySelector('[data-mensagem]').textContent = card.message;
+    document.querySelector('[data-remetente]').textContent = card.sender;
+    var d = new Date(card.createdAt);
+    document.querySelector('[data-data]').textContent = isNaN(d) ? '' : d.toLocaleDateString();
+    document.querySelector('[data-cartao]').hidden = false;
+    document.querySelector('[data-cta]').hidden = false;
+  }).catch(invalid);
+})();
+</script>
+
+</body>
+</html>
