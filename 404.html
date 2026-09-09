@@ -114,6 +114,9 @@
 (function () {
   // /t/<id>  (servido pelo 404.html)  ·  /t/?id=<id>  (servido por /t/index.html)
   var path = location.pathname;
+  // /g/<id> (presente, story 5.24) também cai no 404.html: encaminha para a página do presente.
+  var gift = path.match(/^\/g\/([a-z0-9]{16})\/?$/i);
+  if (gift) { location.replace('/g/?id=' + gift[1].toLowerCase()); return; }
   var m = path.match(/^\/t\/([0-9A-Za-z]{6,16})\/?$/);
   var id = m ? m[1] : (path.indexOf('/t') === 0 ? (new URLSearchParams(location.search).get('id') || '') : null);
   var isTag = id !== null;

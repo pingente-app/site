@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — você ganhou um pingente</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/lang.js" defer></script>
+  <!-- /g/<id> (servido pelo 404.html, que encaminha para /g/?id=) — QR do presente (story 5.24).
+       Com o app instalado, o Android abre o link direto no app (App Link); sem o app, esta
+       página explica e leva à loja. -->
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+  </div>
+</header>
+
+<main class="legal-wrap">
+  <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="pt-BR" lang="pt-BR" aria-pressed="false">🇧🇷 Português</button>
+    <button type="button" data-lang="en-US" lang="en" aria-pressed="false">🇺🇸 English</button>
+    <button type="button" data-lang="es-419" lang="es" aria-pressed="false">🇪🇸 Español</button>
+  </div>
+
+  <section data-lang="pt-BR" lang="pt-BR" data-title="pingente — você ganhou um pingente">
+    <p class="eyebrow">Presente</p>
+    <h1>Você ganhou um pingente 🎁</h1>
+    <p class="sub">Alguém preparou este pingente para você, já com uma face configurada. Para ficar com ele:</p>
+    <ol>
+      <li>Instale o app Pingente no seu celular (Android).</li>
+      <li>Aponte a câmera para o QR da tag de novo, ou toque em <strong>Abrir no app</strong> abaixo. O app registra a posse e deixa a face pronta.</li>
+      <li>No app, abra o pingente e toque em <strong>Enviar</strong> com a tag por perto.</li>
+    </ol>
+    <p class="estado erro" data-invalido hidden>Este link está incompleto ou o presente já foi resgatado.</p>
+  </section>
+  <section data-lang="en-US" lang="en" data-title="pingente — you got a pingente" hidden>
+    <p class="eyebrow">Gift</p>
+    <h1>You got a pingente 🎁</h1>
+    <p class="sub">Someone prepared this pingente for you, with a face already set up. To make it yours:</p>
+    <ol>
+      <li>Install the Pingente app on your phone (Android).</li>
+      <li>Point your camera at the tag's QR again, or tap <strong>Open in the app</strong> below. The app registers ownership and gets the face ready.</li>
+      <li>In the app, open the pingente and tap <strong>Send</strong> with the tag nearby.</li>
+    </ol>
+    <p class="estado erro" data-invalido hidden>This link is incomplete or the gift was already claimed.</p>
+  </section>
+  <section data-lang="es-419" lang="es" data-title="pingente — recibiste un pingente" hidden>
+    <p class="eyebrow">Regalo</p>
+    <h1>Recibiste un pingente 🎁</h1>
+    <p class="sub">Alguien preparó este pingente para ti, con una cara ya configurada. Para quedártelo:</p>
+    <ol>
+      <li>Instala la app Pingente en tu teléfono (Android).</li>
+      <li>Apunta la cámara al QR de la tag otra vez, o toca <strong>Abrir en la app</strong> abajo. La app registra la posesión y deja la cara lista.</li>
+      <li>En la app, abre el pingente y toca <strong>Enviar</strong> con la tag cerca.</li>
+    </ol>
+    <p class="estado erro" data-invalido hidden>Este enlace está incompleto o el regalo ya fue reclamado.</p>
+  </section>
+
+  <div class="acoes" data-acoes hidden>
+    <a class="btn-copiar solido i18n" data-lang="pt-BR" data-abrir href="#">Abrir no app</a>
+    <a class="btn-copiar solido i18n" data-lang="en-US" data-abrir href="#" hidden>Open in the app</a>
+    <a class="btn-copiar solido i18n" data-lang="es-419" data-abrir href="#" hidden>Abrir en la app</a>
+    <a class="btn-copiar i18n" data-lang="pt-BR" href="https://play.google.com/store/apps/details?id=app.pingente">Instalar o app</a>
+    <a class="btn-copiar i18n" data-lang="en-US" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Install the app</a>
+    <a class="btn-copiar i18n" data-lang="es-419" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Instalar la app</a>
+  </div>
+</main>
+
+<script>
+(function () {
+  var m = location.pathname.match(/^\/g\/([a-z0-9]{16})\/?$/i);
+  var id = (m ? m[1] : new URLSearchParams(location.search).get('id') || '').toLowerCase();
+  if (!/^[a-z0-9]{16}$/.test(id)) { document.querySelectorAll('[data-invalido]').forEach(function (el) { el.hidden = false; }); return; }
+  var link = 'https://pingente.app/g/' + id;
+  document.querySelectorAll('[data-abrir]').forEach(function (a) { a.href = link; });
+  document.querySelector('[data-acoes]').hidden = false;
+  fetch('https://pingente-backend.pingente-backend.workers.dev/v1/gifts/' + id).then(function (r) {
+    if (!r.ok) document.querySelectorAll('[data-invalido]').forEach(function (el) { el.hidden = false; });
+  }).catch(function () {});
+})();
+</script>
+
+</body>
+</html>
