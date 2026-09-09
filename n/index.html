@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — notícia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <!-- /n/#ID — link curto da face Manchete (story 5.18). O QR da tag precisa de um endereço
+       curto (33 caracteres); esta página só encaminha para o Worker, que redireciona ao artigo. -->
+</head>
+<body>
+<main class="legal-wrap">
+  <p class="sub" data-msg>Abrindo a notícia…</p>
+  <p class="estado erro" data-erro hidden>Link incompleto. Aponte a câmera para o QR da tag de novo.</p>
+</main>
+<script>
+(function () {
+  var id = (location.hash.replace('#', '') || new URLSearchParams(location.search).get('id') || '').toLowerCase();
+  if (!/^[0-9a-f]{8}$/.test(id)) { document.querySelector('[data-erro]').hidden = false; document.querySelector('[data-msg]').hidden = true; return; }
+  location.replace('https://pingente-backend.pingente-backend.workers.dev/n/' + id);
+})();
+</script>
+</body>
+</html>

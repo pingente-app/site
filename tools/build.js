@@ -36,7 +36,7 @@ const PAGES = [
 const LOCALIZED = new Set(PAGES.map((p) => p.path));
 
 // Páginas de runtime (ficam onde estão; só os links são localizados).
-const RUNTIME = ['t/index.html', 'codes/index.html', 'to/index.html', 'c/index.html'];
+const RUNTIME = ['t/index.html', 'codes/index.html', 'to/index.html', 'c/index.html', 'n/index.html'];
 
 const byCode = Object.fromEntries(LANGS.map((l) => [l.code, l]));
 
