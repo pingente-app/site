@@ -9,6 +9,13 @@
   <meta name="theme-color" content="#F2EEE4">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script src="/assets/js/lang.js" defer></script>
+  <style>
+    .acoes-presente { display: grid; gap: 12px; margin: 20px 0 8px; max-width: 420px; }
+    .acoes-presente a { display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; padding: 16px 22px; border-radius: 14px; text-decoration: none; border: 2px solid var(--tinta, #1a1a1a); color: var(--tinta, #1a1a1a); }
+    .acoes-presente a.solido { background: var(--tinta, #1a1a1a); color: #FAF8F1; }
+    .acoes-presente svg { width: 26px; height: 26px; flex: none; }
+    [hidden] { display: none !important; }
+  </style>
   <!-- /g/<id> (servido pelo 404.html, que encaminha para /g/?id=) — QR do presente (story 5.24).
        Com o app instalado, o Android abre o link direto no app (App Link); sem o app, esta
        página explica e leva à loja. -->
@@ -62,13 +69,13 @@
     <p class="estado erro" data-invalido hidden>Este enlace está incompleto o el regalo ya fue reclamado.</p>
   </section>
 
-  <div class="acoes" data-acoes hidden>
-    <a class="btn-copiar solido i18n" data-lang="pt-BR" data-abrir href="#">Abrir no app</a>
-    <a class="btn-copiar solido i18n" data-lang="en-US" data-abrir href="#" hidden>Open in the app</a>
-    <a class="btn-copiar solido i18n" data-lang="es-419" data-abrir href="#" hidden>Abrir en la app</a>
-    <a class="btn-copiar i18n" data-lang="pt-BR" href="https://play.google.com/store/apps/details?id=app.pingente">Instalar o app</a>
-    <a class="btn-copiar i18n" data-lang="en-US" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Install the app</a>
-    <a class="btn-copiar i18n" data-lang="es-419" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Instalar la app</a>
+  <div class="acoes-presente" data-acoes hidden>
+    <a class="solido i18n" data-lang="pt-BR" data-abrir href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/><path d="M9 7l3 3 3-3"/><path d="M12 4v6"/></svg><span>Abrir no app</span></a>
+    <a class="solido i18n" data-lang="en-US" data-abrir href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/><path d="M9 7l3 3 3-3"/><path d="M12 4v6"/></svg><span>Open in the app</span></a>
+    <a class="solido i18n" data-lang="es-419" data-abrir href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/><path d="M9 7l3 3 3-3"/><path d="M12 4v6"/></svg><span>Abrir en la app</span></a>
+    <a class="i18n" data-lang="pt-BR" href="https://play.google.com/store/apps/details?id=app.pingente"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 4 3.5z"/></svg><span>Instalar o app (Google Play)</span></a>
+    <a class="i18n" data-lang="en-US" href="https://play.google.com/store/apps/details?id=app.pingente" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 4 3.5z"/></svg><span>Install the app (Google Play)</span></a>
+    <a class="i18n" data-lang="es-419" href="https://play.google.com/store/apps/details?id=app.pingente" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 4 3.5z"/></svg><span>Instalar la app (Google Play)</span></a>
   </div>
 </main>
 
