@@ -525,6 +525,12 @@ section[hidden], .i18n[hidden] { display: none !important; }
   padding: 24px; position: relative; display: flex; flex-direction: column; gap: 4px;
 }
 .pack.destaque { border: 2px solid var(--tinta); }
+/* Selo "mais escolhido" fora do fluxo do título: centrado sobre a borda de cima,
+   para o alinhamento dos cinco cards não quebrar em nenhum idioma (2026-09-10). */
+.pack .pack-selo {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--papel-claro); white-space: nowrap;
+}
 .pack .qtd { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--texto-2); }
 .pack .preco { font-size: 30px; font-weight: 800; margin-top: 4px; }
 .pack .aprox { font-size: 13px; color: var(--texto-2); }
