@@ -16,6 +16,6 @@ window.PINGENTE_PADDLE = {
     card: 'pri_01m231rqgr2b6mvqx0w8f4sfc7'
   },
   // Cartão (story 5.20): true = envia sem pagar (o checkout Live só completa depois da verificação da conta).
-  cardsTestMode: true,
+  cardsTestMode: false,
   successUrl: 'https://pingente.app/codes/?txn={transaction_id}'
 };
