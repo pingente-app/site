@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingente — código de revenda</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/pingente-icone.svg">
+  <meta name="theme-color" content="#F2EEE4">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/lang.js" defer></script>
+  <style>
+    .codigo-grande { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 26px; font-weight: 800; letter-spacing: 1px; padding: 14px 18px; border: 2px solid var(--tinta, #26241F); border-radius: 12px; display: inline-block; margin: 8px 0 14px; user-select: all; }
+    .acoes-presente { display: grid; gap: 12px; margin: 16px 0 8px; max-width: 420px; }
+    .acoes-presente a, .acoes-presente button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; padding: 16px 22px; border-radius: 14px; text-decoration: none; border: 2px solid var(--tinta, #26241F); color: var(--tinta, #26241F); background: transparent; cursor: pointer; font-family: inherit; }
+    .acoes-presente .solido { background: var(--tinta, #26241F); color: #FAF8F1; }
+    [hidden] { display: none !important; }
+  </style>
+  <!-- /r/#PGT-XXXX-XXXX-XXXX — QR dos códigos de revenda (impresso em /codes/). Com o app instalado, o Android
+       abre o link direto em "Preparar tags para revenda" com o código preenchido (App Link /r/); sem o app,
+       esta página mostra o código e leva à loja. O código fica no fragmento e não chega ao servidor. -->
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="lockup" href="/"><img src="/assets/img/pingente-lockup.svg" alt="pingente" width="461" height="134"></a>
+  </div>
+</header>
+
+<main class="legal-wrap">
+  <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
+    <button type="button" data-lang="pt-BR" lang="pt-BR" aria-pressed="false">🇧🇷 Português</button>
+    <button type="button" data-lang="en-US" lang="en" aria-pressed="false">🇺🇸 English</button>
+    <button type="button" data-lang="es-419" lang="es" aria-pressed="false">🇪🇸 Español</button>
+  </div>
+
+  <section data-lang="pt-BR" lang="pt-BR" data-title="pingente — código de revenda">
+    <p class="eyebrow">Código de revenda</p>
+    <h1>Seu código de ativações</h1>
+    <div class="codigo-grande" data-code>—</div>
+    <p class="sub">Para usar: instale o app Pingente (Android), abra <strong>Sobre → Preparar tags para revenda</strong> e cole o código. Com o app instalado, aponte a câmera para o QR de novo ou toque em <strong>Abrir no app</strong>: ele abre já com o código preenchido.</p>
+    <p class="estado erro" data-invalido hidden>Este link não tem um código válido.</p>
+  </section>
+  <section data-lang="en-US" lang="en" data-title="pingente — reseller code" hidden>
+    <p class="eyebrow">Reseller code</p>
+    <h1>Your activation code</h1>
+    <div class="codigo-grande" data-code>—</div>
+    <p class="sub">To use it: install the Pingente app (Android), open <strong>About → Prepare tags for resale</strong> and paste the code. With the app installed, point your camera at the QR again or tap <strong>Open in the app</strong>: it opens with the code already filled in.</p>
+    <p class="estado erro" data-invalido hidden>This link does not carry a valid code.</p>
+  </section>
+  <section data-lang="es-419" lang="es" data-title="pingente — código de reventa" hidden>
+    <p class="eyebrow">Código de reventa</p>
+    <h1>Tu código de activaciones</h1>
+    <div class="codigo-grande" data-code>—</div>
+    <p class="sub">Para usarlo: instala la app Pingente (Android), abre <strong>Acerca de → Preparar tags para reventa</strong> y pega el código. Con la app instalada, apunta la cámara al QR otra vez o toca <strong>Abrir en la app</strong>: se abre con el código ya puesto.</p>
+    <p class="estado erro" data-invalido hidden>Este enlace no trae un código válido.</p>
+  </section>
+
+  <div class="acoes-presente" data-acoes hidden>
+    <button type="button" class="i18n" data-lang="pt-BR" data-copy>Copiar código</button>
+    <button type="button" class="i18n" data-lang="en-US" data-copy hidden>Copy code</button>
+    <button type="button" class="i18n" data-lang="es-419" data-copy hidden>Copiar código</button>
+    <a class="solido i18n" data-lang="pt-BR" data-abrir href="#">Abrir no app</a>
+    <a class="solido i18n" data-lang="en-US" data-abrir href="#" hidden>Open in the app</a>
+    <a class="solido i18n" data-lang="es-419" data-abrir href="#" hidden>Abrir en la app</a>
+    <a class="i18n" data-lang="pt-BR" href="https://play.google.com/store/apps/details?id=app.pingente">Instalar o app (Google Play)</a>
+    <a class="i18n" data-lang="en-US" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Install the app (Google Play)</a>
+    <a class="i18n" data-lang="es-419" href="https://play.google.com/store/apps/details?id=app.pingente" hidden>Instalar la app (Google Play)</a>
+  </div>
+</main>
+
+<script>
+(function () {
+  var raw = (location.hash || '').replace(/^#/, '') || new URLSearchParams(location.search).get('c') || '';
+  var code = raw.toUpperCase().replace(/[^0-9A-Z]/g, '');
+  if (code.slice(0, 3) === 'PGT') code = code.slice(3);
+  if (!/^[0-9A-HJKMNP-TV-Z]{12}$/.test(code)) { document.querySelectorAll('[data-invalido]').forEach(function (el) { el.hidden = false; }); return; }
+  var pretty = 'PGT-' + code.slice(0, 4) + '-' + code.slice(4, 8) + '-' + code.slice(8, 12);
+  document.querySelectorAll('[data-code]').forEach(function (el) { el.textContent = pretty; });
+  var link = 'https://pingente.app/r/#' + pretty;
+  document.querySelectorAll('[data-abrir]').forEach(function (a) { a.href = link; });
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var old = b.textContent;
+      (navigator.clipboard ? navigator.clipboard.writeText(pretty) : Promise.reject()).then(function () { b.textContent = '✓'; setTimeout(function () { b.textContent = old; }, 1500); }).catch(function () {});
+    });
+  });
+  document.querySelector('[data-acoes]').hidden = false;
+})();
+</script>
+
+</body>
+</html>
