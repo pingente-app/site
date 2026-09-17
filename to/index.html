@@ -57,6 +57,7 @@
     <p class="sub">Uma foto, uma mensagem e o seu nome. O cartão postal aparece na tela e-ink de quem recebe, em preto e branco pontilhado, com um QR que abre o cartão inteiro no celular. Custa <strong data-preco>US$ 0,99</strong>, pago uma vez, sem conta.</p>
     <p class="estado erro" data-invalido hidden>Este endereço não existe ou foi trocado. Peça a quem vai receber para mandar o link de novo.</p>
     <p class="estado ok" data-enviado hidden>Cartão postal enviado! Ele aparece na tag na próxima atualização (em até 10 minutos, com o celular por perto).</p>
+    <p class="estado" data-aguardando hidden>Aguardando a confirmação do pagamento… Se você pagou por Pix em outra aba, pode fechar a janela do pagamento: esta página atualiza sozinha assim que a Paddle confirmar.</p>
   </section>
   <section data-lang="en-US" lang="en" data-title="pingente — send a postcard" hidden>
     <p class="eyebrow">Postcard</p>
@@ -64,6 +65,7 @@
     <p class="sub">A photo, a message and your name. The postcard shows up on the recipient's e-ink screen, dithered in black and white, with a QR code that opens the full card on their phone. It costs <strong data-preco>US$ 0.99</strong>, paid once, no account.</p>
     <p class="estado erro" data-invalido hidden>This address does not exist or was changed. Ask the recipient to send the link again.</p>
     <p class="estado ok" data-enviado hidden>Postcard sent! It appears on the tag at the next update (within 10 minutes, with the phone nearby).</p>
+    <p class="estado" data-aguardando hidden>Waiting for payment confirmation… If you paid in another tab, you can close the payment window: this page updates by itself as soon as Paddle confirms.</p>
   </section>
   <section data-lang="es-419" lang="es" data-title="pingente — enviar una postal" hidden>
     <p class="eyebrow">Postal</p>
@@ -71,6 +73,7 @@
     <p class="sub">Una foto, un mensaje y tu nombre. La postal aparece en la pantalla e-ink de quien la recibe, en blanco y negro punteado, con un QR que abre la tarjeta completa en el teléfono. Cuesta <strong data-preco>US$ 0,99</strong>, se paga una vez, sin cuenta.</p>
     <p class="estado erro" data-invalido hidden>Esta dirección no existe o fue cambiada. Pide a quien la recibe que envíe el enlace otra vez.</p>
     <p class="estado ok" data-enviado hidden>¡Postal enviada! Aparece en la tag en la próxima actualización (en hasta 10 minutos, con el teléfono cerca).</p>
+    <p class="estado" data-aguardando hidden>Esperando la confirmación del pago… Si pagaste en otra pestaña, puedes cerrar la ventana de pago: esta página se actualiza sola en cuanto Paddle confirme.</p>
   </section>
 
   <form class="cartao-form" data-form hidden>
@@ -199,7 +202,28 @@
         }
         if (!window.Paddle || !cfg.clientToken || !cfg.prices || !cfg.prices.card) throw new Error('checkout indisponível');
         if (cfg.environment === 'sandbox') window.Paddle.Environment.set('sandbox');
-        window.Paddle.Initialize({ token: cfg.clientToken, eventCallback: function (e) { if (e.name === 'checkout.completed') location.replace(location.pathname + '?sent=' + card.id); } });
+        var done = false;
+        function sent() {
+          if (done) return; done = true;
+          try { window.Paddle.Checkout.close(); } catch (_) {}
+          location.replace(location.pathname + '?sent=' + card.id);
+        }
+        // O Pix confirma em outra aba e o overlay desta não fica sabendo: consulta o status do cartão
+        // a cada 4 s por até 20 min e troca para "enviado" assim que o webhook marcar como pago.
+        var tries = 0;
+        (function watch() {
+          if (done || tries++ > 300) return;
+          setTimeout(function () {
+            fetch(API + '/v1/cards/' + card.id + '/status', { cache: 'no-store' })
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (j) { if (j && (j.status === 'paid' || j.status === 'read')) sent(); else watch(); })
+              .catch(watch);
+          }, 4000);
+        })();
+        window.Paddle.Initialize({ token: cfg.clientToken, eventCallback: function (e) {
+          if (e.name === 'checkout.completed') sent();
+          if (e.name === 'checkout.closed' && !done) { $$('[data-aguardando]').forEach(function (el) { el.hidden = false; }); }
+        } });
         window.Paddle.Checkout.open({
           items: [{ priceId: cfg.prices.card, quantity: 1 }],
           customData: { cardId: card.id },
