@@ -37,7 +37,7 @@
       if (done || tries++ > 300) return;
       setTimeout(function () {
         fetch(API + '/v1/codes?txn=' + encodeURIComponent(txn), { cache: 'no-store', headers: { accept: 'application/json' } })
-          .then(function (r) { if (r.ok) goToCodes(); else tick(); })
+          .then(function (r) { if (r.status === 200) goToCodes(); else tick(); }) // 202 = webhook ainda não processou
           .catch(tick);
       }, 4000);
     })();
